@@ -5,7 +5,7 @@ class SeekersController < ApplicationController
   end
 
   def create
-    seeker = Seeker.new(employer_params)
+    seeker = Seeker.new(seeker_params)
     if seeker.save
       render json: { id: seeker.id }
     else
@@ -26,6 +26,7 @@ class SeekersController < ApplicationController
   private
 
   def seeker_params
-    params.permit(:username, :password_digest, :email)
+    params.require(:seekers).permit(:username, :password, :password_confirmation, :email)
   end
+
 end
