@@ -5,10 +5,13 @@ class SeekersController < ApplicationController
   end
 
   def create
-    seeker = Seeker.create(seeker_params)
-    render json: seeker
+    seeker = Seeker.new(employer_params)
+    if seeker.save
+      render json: { id: seeker.id }
+    else
+      render json: { errors: seeker.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-
   def show
     seeker = Seeker.find(params[:id])
     render json: seeker
