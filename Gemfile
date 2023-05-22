@@ -38,7 +38,6 @@ gem "rack-cors"
 
 gem 'active_model_serializers'
 
-gem 'pgcrypto'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
