@@ -5,18 +5,18 @@ class SeekersController < ApplicationController
   end
 
   def create
-    disp = Seeker.create(dis_params)
-    render json: disp
+    seeker = Seeker.create(seeker_params)
+    render json: seeker
   end
 
   def show
-    disp = Seeker.find(params[:id])
-    render json: disp
+    seeker = Seeker.find(params[:id])
+    render json: seeker
   end
 
   def destroy
-    disp = Seeker.find(params[:id])
-    disp.destroy
+    seeker = Seeker.find(params[:id])
+    seeker.destroy
     render json: { message: "Record deleted" }
   end
 
