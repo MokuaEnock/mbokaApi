@@ -1,10 +1,8 @@
 class SeekersController < ApplicationController
-
   def index
     seekers = Seeker.all
     render json: seekers
   end
-
 
   def create
     disp = Seeker.create(dis_params)
@@ -27,5 +25,4 @@ class SeekersController < ApplicationController
   def seeker_params
     params.permit(:username, :password_digest, :email)
   end
-
 end
