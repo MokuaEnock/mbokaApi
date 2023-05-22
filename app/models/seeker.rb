@@ -1,4 +1,6 @@
 class Seeker < ApplicationRecord
-  has_one :seeker_detail
+  has_secure_password
   
+  has_one :seeker_detail
+
 end
