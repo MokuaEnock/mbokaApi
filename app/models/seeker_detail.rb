@@ -1,0 +1,2 @@
+class SeekerDetail < ApplicationRecord
+end
