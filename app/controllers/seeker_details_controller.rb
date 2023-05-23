@@ -5,8 +5,16 @@ class SeekerDetailsController < ApplicationController
   end
 
   def create
-    disp = SeekerDetail.create(seeker_details_params)
-    render json: disp
+    seeker = SeekerDetail.new(seeker_details_params)
+    if params[:avatar]
+      seeker.avatar.attach(params[:avatar])
+      seeker.avatar.variant(resize: "300x300>").processed
+    end
+    if seeker.save
+      render json: seeker
+    else
+      render json: { errors: seeker.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -18,6 +26,15 @@ class SeekerDetailsController < ApplicationController
     disp = SeekerDetail.find(params[:id])
     disp.destroy
     render json: { message: "Record deleted" }
+  end
+
+  def update
+    seeker = SeekerDetail.find(params[:id])
+    if params[:avatar]
+      seeker.avatar.attach(params[:avatar])
+      seeker.avatar.variant(resize: "300x300>").processed
+    end
+    render json: { message: "Seeker updated successfully" }
   end
 
   private

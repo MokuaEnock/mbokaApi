@@ -23,6 +23,7 @@ class SeekersController < ApplicationController
     render json: { message: "Record deleted" }
   end
 
+
   private
 
   def seeker_params
